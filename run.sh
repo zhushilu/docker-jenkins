@@ -30,5 +30,5 @@ if [ $JENKINS_MODE = "SLAVE" ]; then
   MASTER_URL="-url $JENKINS_URL"
 	java -Duser.timezone=$TIMEZONE \
   -Dorg.jenkinsci.remoting.engine.JnlpProtocol3.disabled=true \
-  -cp /usr/share/jenkins/slave.jar hudson.remoting.jnlp.Main -headless $MASTER_URL "$@"
+  -cp /usr/share/jenkins/slave.jar hudson.remoting.jnlp.Main -headless -url $JENKINS_URL  $JENKINS_SECRET  $JENKINS_NAME "$@"
 fi
