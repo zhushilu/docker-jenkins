@@ -86,7 +86,7 @@ robotframework-databaselibrary robotframework-ftplibrary \
 robotframework-requests robotframework-ride \
 robotframework-selenium2library
 
-ln -s /usr/share/maven/bin/* /usr/local/bin
+ln -s /usr/local/share/maven/bin/* /usr/local/bin
 mkdir -p /data/jenkins
 mkdir -p /data/maven
 mkdir -p /data/kube
