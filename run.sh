@@ -22,13 +22,13 @@ if [ $JENKINS_MODE = "MASTER" ]; then
     cp /usr/share/jenkins/config/*.groovy "${JENKINS_HOME}/init.groovy.d/"
     cp /usr/share/jenkins/config/*.xml "${JENKINS_HOME}/"
   fi
-  java -jar -Duser.timezone=$TIMEZONE \
+  java -jar -Duser.timezone=$TIMEZONE  $JAVA_OPTS \
     -Dhudson.model.DirectoryBrowserSupport.CSP= \
     /usr/share/jenkins/jenkins.war
 fi
 if [ $JENKINS_MODE = "SLAVE" ]; then
   MASTER_URL="-url $JENKINS_URL"
-	java -Duser.timezone=$TIMEZONE \
+	java -Duser.timezone=$TIMEZONE $JAVA_OPTS \
   -Dorg.jenkinsci.remoting.engine.JnlpProtocol3.disabled=true \
   -cp /usr/share/jenkins/slave.jar hudson.remoting.jnlp.Main -headless -url $JENKINS_URL  $JENKINS_SECRET  $JENKINS_NAME "$@"
 fi
